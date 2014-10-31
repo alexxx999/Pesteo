@@ -48,14 +48,9 @@ public class DBHelper extends OrmLiteSqliteOpenHelper {
 		}
 	} /*onUpgrade*/
 
-	public Dao<producto, Integer> getProductoDao() {
-		if (productoDao == null){
-			try {
-				productoDao = getDao(producto.class);
-			} catch (SQLException e) {
-				Log.e(TAG, "Error al regresar DAO producto", e);
-			}
-		}
+	public Dao<producto, Integer> getProductoDao() throws SQLException{
+		if (productoDao == null) productoDao = getDao(producto.class);
+
 		return productoDao;
 	}
 
@@ -64,5 +59,12 @@ public class DBHelper extends OrmLiteSqliteOpenHelper {
 			rteProductoDao = getRuntimeExceptionDao(producto.class);
 		}
 		return rteProductoDao;
+	}
+
+	@Override
+	public void close() {
+		super.close();
+		productoDao = null;
+		rteProductoDao = null;
 	}
 }
