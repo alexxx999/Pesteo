@@ -53,7 +53,26 @@ public class DBManager {
 		try {
 			istrm = cntx.getAssets().open("producto.csv");
 			BufferedReader dbReader = new BufferedReader(new InputStreamReader(istrm));
+			while ((line = dbReader.readLine()) != null){
+				String[] rwData = line.split("|");
+				mngProd.setIdProd(rwData[0]);
+				mngProd.setIdEmp(Integer.valueOf(rwData[1]));
+				mngProd.setDescAlm(rwData[2]);
+				mngProd.setUnidad(rwData[3]);
+				mngProd.setFrccEnt1(Integer.valueOf(rwData[4]));
+				mngProd.setFrccNum1(Integer.valueOf(rwData[5]));
+				mngProd.setFrccDen1(Integer.valueOf(rwData[6]));
+				mngProd.setFrccEnt2(Integer.valueOf(rwData[7]));
+				mngProd.setFrccNum2(Integer.valueOf(rwData[8]));
+				mngProd.setFrccDen2(Integer.valueOf(rwData[9]));
+				mngProd.setPerfil(rwDate[10]);
+				mngProd.setCmMed1(Double.valueOf(rwData[11]));
+				mngProd.setCmMed2(Double.valueOf(rwData[12]));
+				mngProd.setMedPulg(rwData[13]);
 
+
+
+			}
 
 
 		} catch (Exception e) {
