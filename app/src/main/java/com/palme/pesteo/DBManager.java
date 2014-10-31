@@ -65,7 +65,7 @@ public class DBManager {
 				mngProd.setFrccEnt2(Integer.valueOf(rwData[7]));
 				mngProd.setFrccNum2(Integer.valueOf(rwData[8]));
 				mngProd.setFrccDen2(Integer.valueOf(rwData[9]));
-				mngProd.setPerfil(rwDate[10]);
+				mngProd.setPerfil(rwData[10]);
 				mngProd.setCmMed1(Double.valueOf(rwData[11]));
 				mngProd.setCmMed2(Double.valueOf(rwData[12]));
 				mngProd.setMedPulg(rwData[13]);
