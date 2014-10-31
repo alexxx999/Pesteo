@@ -16,6 +16,8 @@ public class DBManager {
 
 
 
+
+
 	public static void init(Context cntx){
 		if(DBMinst == null) DBMinst = new DBManager(cntx);
 	}
@@ -46,9 +48,14 @@ public class DBManager {
 	public void setCrgProds(Context cntx){
 		Cursor crsProds;
 		InputStream istrm = null;
+		String line = "";
+		producto mngProd = new producto();
 		try {
 			istrm = cntx.getAssets().open("producto.csv");
 			BufferedReader dbReader = new BufferedReader(new InputStreamReader(istrm));
+
+
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
