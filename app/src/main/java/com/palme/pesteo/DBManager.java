@@ -2,6 +2,7 @@ package com.palme.pesteo;
 
 import android.content.Context;
 import android.database.Cursor;
+import android.util.Log;
 
 import java.io.BufferedReader;
 import java.io.InputStream;
@@ -13,8 +14,7 @@ import java.io.InputStreamReader;
 public class DBManager {
 
 	private static DBManager DBMinst;
-
-
+	private final String TAG = DBManager.class.getSimpleName();
 
 
 
@@ -29,6 +29,7 @@ public class DBManager {
 	private DBHelper dbhlp;
 	private DBManager(Context cntx) {
 		dbhlp = new DBHelper(cntx);
+		getDBMinst().setCrgProds(cntx);
 	}
 
 	public DBHelper getDbhlp() {
@@ -50,10 +51,13 @@ public class DBManager {
 		InputStream istrm = null;
 		String line = "";
 		producto mngProd = new producto();
+
+		getDbhlp().emptyProd();
+
 		try {
 			istrm = cntx.getAssets().open("producto.csv");
 			BufferedReader dbReader = new BufferedReader(new InputStreamReader(istrm));
-			while ((line = dbReader.readLine()) != null){
+			while ((line = dbReader.readLine()) != null) {
 				String[] rwData = line.split("|");
 				mngProd.setIdProd(rwData[0]);
 				mngProd.setIdEmp(Integer.valueOf(rwData[1]));
@@ -69,14 +73,10 @@ public class DBManager {
 				mngProd.setCmMed1(Double.valueOf(rwData[11]));
 				mngProd.setCmMed2(Double.valueOf(rwData[12]));
 				mngProd.setMedPulg(rwData[13]);
-
-
-
+				getDbhlp().getRteProductoDao().create(mngProd);
 			}
-
-
 		} catch (Exception e) {
-			e.printStackTrace();
+			Log.e(TAG, "No fue posible actualizar las tablas", e);
 		} finally {
 		}
 	}

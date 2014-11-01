@@ -25,14 +25,18 @@ public class DBHelper extends OrmLiteSqliteOpenHelper {
 	private Dao<producto, Integer> productoDao = null;
 	private RuntimeExceptionDao<producto, Integer> rteProductoDao = null;
 
+	private DBManager dbMng;
+
 	public DBHelper(Context cntx) {
 		super(cntx, DBNAME, null, DBVERSION,R.raw.ormlite_config);
+
 	}
 
 	@Override
 	public void onCreate(SQLiteDatabase dbName, ConnectionSource srcCnx) {
 		try {
 			TableUtils.createTableIfNotExists(srcCnx,producto.class);
+
 		} catch (SQLException e) {
 			Log.e(TAG,"No fue posible crear las tablas",e);
 		}
@@ -59,6 +63,16 @@ public class DBHelper extends OrmLiteSqliteOpenHelper {
 			rteProductoDao = getRuntimeExceptionDao(producto.class);
 		}
 		return rteProductoDao;
+	}
+
+	public void emptyProd (){
+		ConnectionSource cnx = this.connectionSource;
+		try {
+			TableUtils.clearTable(cnx ,producto.class);
+		} catch (SQLException e) {
+			Log.e(TAG, "no fue posible borrar el contenido de producto", e);
+		}
+
 	}
 
 	@Override
