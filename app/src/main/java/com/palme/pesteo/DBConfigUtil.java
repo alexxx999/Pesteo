@@ -20,9 +20,10 @@ public class DBConfigUtil extends OrmLiteConfigUtil {
 		String projectRoot = System.getProperty(currDir);
 		String fullConfigPath = projectRoot + configPath;
 		File configFile = new File(fullConfigPath);
-
-
-
+		if (configFile.exists()){
+			configFile.delete();
+			configFile = new File(fullConfigPath);
+		}
+		writeConfigFile(configFile,classes);
 	}
-
 }

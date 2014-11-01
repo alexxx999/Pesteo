@@ -13,9 +13,13 @@ import java.io.Serializable;
 @DatabaseTable(tableName = "producto")
 public class producto implements Serializable{
 
-	@DatabaseField(generatedId = true) 	private Integer id;
-	@DatabaseField private String idProd;
-	@DatabaseField private Integer idEmp;
+	@DatabaseField (generatedId = true)
+	private Integer id;
+	@DatabaseField (index = true, canBeNull = true)
+	private String idProd;
+	@DatabaseField (canBeNull = true)
+	private Integer idEmp;
+
 	@DatabaseField private String descAlm;
 	@DatabaseField private String unidad;
 	@DatabaseField private Integer frccEnt1;
@@ -155,7 +159,8 @@ public class producto implements Serializable{
 	@Override
 	public boolean equals(Object o) {
 		if (this == o) return true;
-		if (o == null || getClass() != o.getClass()) return false;
+		if (o == null || ((Object)this).getClass() != o.getClass() ) return false;
+
 
 		producto producto = (producto) o;
 
@@ -177,7 +182,6 @@ public class producto implements Serializable{
 			return false;
 		if (frccNum2 != null ? !frccNum2.equals(producto.frccNum2) : producto.frccNum2 != null)
 			return false;
-		if (!id.equals(producto.id)) return false;
 		if (!idEmp.equals(producto.idEmp)) return false;
 		if (!idProd.equals(producto.idProd)) return false;
 		if (medPulg != null ? !medPulg.equals(producto.medPulg) : producto.medPulg != null)
@@ -192,8 +196,7 @@ public class producto implements Serializable{
 
 	@Override
 	public int hashCode() {
-		int result = id.hashCode();
-		result = 31 * result + idProd.hashCode();
+		int result = idProd.hashCode();
 		result = 31 * result + idEmp.hashCode();
 		result = 31 * result + (descAlm != null ? descAlm.hashCode() : 0);
 		result = 31 * result + (unidad != null ? unidad.hashCode() : 0);

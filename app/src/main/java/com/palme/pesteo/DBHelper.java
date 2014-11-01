@@ -26,7 +26,7 @@ public class DBHelper extends OrmLiteSqliteOpenHelper {
 	private RuntimeExceptionDao<producto, Integer> rteProductoDao = null;
 
 	public DBHelper(Context cntx) {
-		super(cntx, DBNAME, null, DBVERSION);
+		super(cntx, DBNAME, null, DBVERSION,R.raw.ormlite_config);
 	}
 
 	@Override

@@ -1,0 +1,57 @@
+#
+# generated on 2014/11/01 09:56:30
+#
+# --table-start--
+dataClass=com.palme.pesteo.producto
+tableName=producto
+# --table-fields-start--
+# --field-start--
+fieldName=id
+generatedId=true
+# --field-end--
+# --field-start--
+fieldName=idProd
+indexName=producto_idProd_idx
+# --field-end--
+# --field-start--
+fieldName=idEmp
+# --field-end--
+# --field-start--
+fieldName=descAlm
+# --field-end--
+# --field-start--
+fieldName=unidad
+# --field-end--
+# --field-start--
+fieldName=frccEnt1
+# --field-end--
+# --field-start--
+fieldName=frccNum1
+# --field-end--
+# --field-start--
+fieldName=frccDen1
+# --field-end--
+# --field-start--
+fieldName=frccEnt2
+# --field-end--
+# --field-start--
+fieldName=frccNum2
+# --field-end--
+# --field-start--
+fieldName=frccDen2
+# --field-end--
+# --field-start--
+fieldName=perfil
+# --field-end--
+# --field-start--
+fieldName=cmMed1
+# --field-end--
+# --field-start--
+fieldName=cmMed2
+# --field-end--
+# --field-start--
+fieldName=medPulg
+# --field-end--
+# --table-fields-end--
+# --table-end--
+#################################
